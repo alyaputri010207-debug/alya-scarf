@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lumi Hijab — Shopping Bag</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f8f4ee;
+      --brown: #5c493d;
+      --dark: #2d2521;
+      --soft: #e9ded3;
+      --muted: #82736a;
+      --line: #ddd1c6;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+
+    /* ================= NAVBAR ================= */
+
+    nav {
+      height: 80px;
+
+      padding: 0 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: rgba(248, 244, 238, 0.96);
+
+      position: sticky;
+      top: 0;
+
+      z-index: 100;
+
+      border-bottom: 1px solid rgba(92, 73, 61, 0.08);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+
+      font-size: 27px;
+
+      color: var(--brown);
+
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+
+      gap: 35px;
+
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+
+      color: var(--dark);
+
+      font-size: 14px;
+
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--brown);
+    }
+
+    .nav-links .active {
+      color: var(--brown);
+    }
+
+
+    /* ================= HEADER ================= */
+
+    .bag-header {
+      text-align: center;
+
+      padding: 80px 20px 55px;
+    }
+
+    .eyebrow {
+      color: #927969;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 17px;
+    }
+
+    .bag-header h1 {
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(42px, 5vw, 62px);
+
+      font-weight: 600;
+
+      margin-bottom: 15px;
+    }
+
+    .bag-header h1 span {
+      color: var(--brown);
+
+      font-style: italic;
+    }
+
+    .bag-header p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+
+    /* ================= BAG ================= */
+
+    .bag-container {
+
+      padding: 0 7% 100px;
+
+      max-width: 1300px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 1.5fr 0.8fr;
+
+      gap: 50px;
+    }
+
+
+    /* ================= ITEMS ================= */
+
+    .bag-items {
+      background: var(--white);
+
+      padding: 25px;
+    }
+
+    .bag-title {
+      font-family: "Playfair Display", serif;
+
+      font-size: 24px;
+
+      margin-bottom: 25px;
+    }
+
+    .bag-item {
+
+      display: grid;
+
+      grid-template-columns: 125px 1fr auto;
+
+      gap: 22px;
+
+      padding: 20px 0;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bag-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .item-image {
+      width: 125px;
+      height: 150px;
+
+      overflow: hidden;
+
+      background: var(--soft);
+    }
+
+    .item-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .item-info {
+      padding-top: 5px;
+    }
+
+    .item-category {
+      color: #927969;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 8px;
+    }
+
+    .item-name {
+      font-family: "Playfair Display", serif;
+
+      font-size: 21px;
+
+      margin-bottom: 8px;
+    }
+
+    .item-color {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      margin-bottom: 17px;
+    }
+
+    .item-price {
+      color: var(--brown);
+
+      font-size: 14px;
+
+      font-weight: 600;
+    }
+
+
+    /* ================= QUANTITY ================= */
+
+    .item-controls {
+      display: flex;
+
+      align-items: flex-end;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+    }
+
+    .remove {
+      border: none;
+
+      background: none;
+
+      color: #9a897d;
+
+      font-size: 11px;
+
+      cursor: pointer;
+
+      text-decoration: underline;
+    }
+
+    .quantity {
+      display: flex;
+
+      align-items: center;
+
+      width: 105px;
+
+      height: 38px;
+
+      border: 1px solid var(--line);
+    }
+
+    .quantity button {
+      width: 32px;
+
+      height: 100%;
+
+      border: none;
+
+      background: transparent;
+
+      color: var(--brown);
+
+      font-size: 16px;
+
+      cursor: pointer;
+    }
+
+    .quantity span {
+      flex: 1;
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+
+    /* ================= SUMMARY ================= */
+
+    .summary {
+
+      background: #eee5db;
+
+      padding: 32px;
+
+      height: fit-content;
+    }
+
+    .summary h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 27px;
+
+      margin-bottom: 28px;
+    }
+
+    .summary-row {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 16px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .summary-row.total {
+
+      color: var(--dark);
+
+      font-size: 17px;
+
+      font-weight: 600;
+
+      border-top: 1px solid #d5c8bc;
+
+      padding-top: 20px;
+
+      margin-top: 20px;
+    }
+
+    .checkout {
+
+      width: 100%;
+
+      height: 52px;
+
+      margin-top: 25px;
+
+      border: none;
+
+      background: var(--brown);
+
+      color: white;
+
+      font-family: "DM Sans", sans-serif;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.5px;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+    }
+
+    .checkout:hover {
+      background: var(--dark);
+    }
+
+
+    /* ================= PROMO ================= */
+
+    .promo-note {
+
+      margin-top: 25px;
+
+      padding-top: 20px;
+
+      border-top: 1px solid #d5c8bc;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.7;
+
+      text-align: center;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+
+      background: #302721;
+
+      color: white;
+
+      padding: 50px 7%;
+    }
+
+    .footer-logo {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 28px;
+
+      margin-bottom: 12px;
+    }
+
+    .footer-description {
+
+      color: #bdb1aa;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      max-width: 320px;
+    }
+
+    .copyright {
+
+      border-top: 1px solid rgba(255,255,255,0.1);
+
+      margin-top: 35px;
+
+      padding-top: 18px;
+
+      color: #8f837c;
+
+      font-size: 11px;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .bag-container {
+
+        grid-template-columns: 1fr;
+
+        padding: 0 5% 70px;
+
+      }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+      .bag-header {
+        padding-top: 55px;
+      }
+
+      .bag-item {
+
+        grid-template-columns: 90px 1fr;
+
+        gap: 15px;
+
+      }
+
+      .item-image {
+
+        width: 90px;
+
+        height: 120px;
+
+      }
+
+      .item-controls {
+
+        grid-column: 2;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        margin-top: -15px;
+
+      }
+
+      .summary {
+        padding: 25px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+
+    <div class="logo">
+      LUMI.
+    </div>
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="index.html">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="collection.html">
+          Collection
+        </a>
+      </li>
+
+      <li>
+        <a href="product.html">
+          Product
+        </a>
+      </li>
+
+      <li>
+        <a href="cart.html" class="active">
+          Bag
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="bag-header">
+
+    <div class="eyebrow">
+      Your Selection
+    </div>
+
+    <h1>
+      Shopping <span>Bag</span>
+    </h1>
+
+    <p>
+      Review your selected pieces before
+      completing your order.
+    </p>
+
+  </section>
+
+
+  <!-- ================= BAG ================= -->
+
+  <main class="bag-container">
+
+
+    <!-- ITEMS -->
+
+    <section class="bag-items">
+
+      <h2 class="bag-title">
+        Your Items
+      </h2>
+
+
+      <!-- ITEM -->
+
+      <div class="bag-item">
+
+
+        <div class="item-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1584187772382-b9c0f6a5c7e6?auto=format&fit=crop&w=600&q=85"
+            alt="Silk Voal"
+          >
+
+        </div>
+
+
+        <div class="item-info">
+
+          <div class="item-category">
+            Voal Premium
+          </div>
+
+          <div class="item-name">
+            Silk Voal
+          </div>
+
+          <div class="item-color">
+            Color: Cream
+          </div>
+
+          <div class="item-price">
+            Rp129.000
+          </div>
+
+        </div>
+
+
+        <div class="item-controls">
+
+          <button
+            class="remove"
+            onclick="removeItem()"
+          >
+            Remove
+          </button>
+
+          <div class="quantity">
+
+            <button onclick="decreaseQuantity()">
+              −
+            </button>
+
+            <span id="quantity">
+              1
+            </span>
+
+            <button onclick="increaseQuantity()">
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- CONTINUE SHOPPING -->
+
+      <a
+        href="collection.html"
+        style="
+          display:inline-block;
+          margin-top:25px;
+          color:#5c493d;
+          font-size:12px;
+          text-decoration:none;
+          font-weight:600;
+        "
+      >
+        ← CONTINUE SHOPPING
+      </a>
+
+
+    </section>
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <aside class="summary">
+
+      <h2>
+        Order Summary
+      </h2>
+
+
+      <div class="summary-row">
+
+        <span>
+          Subtotal
+        </span>
+
+        <span id="subtotal">
+          Rp129.000
+        </span>
+
+      </div>
+
+
+      <div class="summary-row">
+
+        <span>
+          Shipping
+        </span>
+
+        <span>
+          Free
+        </span>
+
+      </div>
+
+
+      <div class="summary-row total">
+
+        <span>
+          Total
+        </span>
+
+        <span id="total">
+          Rp129.000
+        </span>
+
+      </div>
+
+
+      <button
+        class="checkout"
+        onclick="checkout()"
+      >
+        PROCEED TO CHECKOUT
+      </button>
+
+
+      <div class="promo-note">
+
+        Free shipping untuk pembelian tertentu.
+        <br>
+        Pembayaran aman dan terpercaya.
+
+      </div>
+
+    </aside>
+
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer-logo">
+      LUMI.
+    </div>
+
+    <p class="footer-description">
+
+      Hijab premium untuk perempuan yang
+      percaya bahwa kesederhanaan selalu
+      memiliki tempat dalam keanggunan.
+
+    </p>
+
+    <div class="copyright">
+
+      © 2026 LUMI. All rights reserved.
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    let quantity = 1;
+
+    const price = 129000;
+
+
+    function formatRupiah(number) {
+
+      return "Rp" + number.toLocaleString("id-ID");
+
+    }
+
+
+    function updateTotal() {
+
+      const total = price * quantity;
+
+      document.getElementById("quantity").textContent = quantity;
+
+      document.getElementById("subtotal").textContent =
+        formatRupiah(total);
+
+      document.getElementById("total").textContent =
+        formatRupiah(total);
+
+    }
+
+
+    function increaseQuantity() {
+
+      quantity++;
+
+      updateTotal();
+
+    }
+
+
+    function decreaseQuantity() {
+
+      if (quantity > 1) {
+
+        quantity--;
+
+        updateTotal();
+
+      }
+
+    }
+
+
+    function removeItem() {
+
+      const confirmation =
+        confirm("Hapus Silk Voal dari shopping bag?");
+
+      if (confirmation) {
+
+        alert("Produk berhasil dihapus dari bag.");
+
+      }
+
+    }
+
+
+    function checkout() {
+
+      alert(
+        "Checkout LUMI siap digunakan pada tahap berikutnya."
+      );
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>

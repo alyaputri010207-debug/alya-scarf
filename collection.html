@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="id">
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alya Scarf — Collection</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f8f4ee;
+      --brown: #5c493d;
+      --dark: #2d2521;
+      --soft: #e9ded3;
+      --white: #ffffff;
+      --muted: #82736a;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav {
+      height: 80px;
+      padding: 0 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: rgba(248, 244, 238, 0.96);
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      border-bottom: 1px solid rgba(92, 73, 61, 0.08);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      color: var(--brown);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: var(--brown);
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 18px;
+      font-size: 19px;
+    }
+
+    .nav-icons span {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-icons span:hover {
+      transform: translateY(-2px);
+    }
+
+
+    /* ================= PAGE HEADER ================= */
+
+    .collection-header {
+      text-align: center;
+      padding: 85px 20px 55px;
+    }
+
+    .eyebrow {
+      color: #927969;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .collection-header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 5vw, 65px);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .collection-header h1 span {
+      color: var(--brown);
+      font-style: italic;
+    }
+
+    .collection-header p {
+      max-width: 550px;
+      margin: auto;
+
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+
+    /* ================= CATEGORY ================= */
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      padding: 0 7% 55px;
+    }
+
+    .category {
+      border: 1px solid #d7c9bd;
+      background: transparent;
+
+      padding: 11px 22px;
+
+      border-radius: 50px;
+
+      color: var(--brown);
+      font-size: 13px;
+
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .category:hover,
+    .category.active {
+      background: var(--brown);
+      color: white;
+      border-color: var(--brown);
+    }
+
+
+    /* ================= PRODUCT GRID ================= */
+
+    .products {
+      padding: 0 7% 100px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 28px;
+    }
+
+    .product-card {
+      position: relative;
+    }
+
+    .product-image {
+      height: 390px;
+      overflow: hidden;
+
+      background: var(--soft);
+
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      transition: transform 0.6s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+
+    /* BADGE */
+
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+
+      background: white;
+      color: var(--brown);
+
+      padding: 7px 11px;
+
+      font-size: 10px;
+      font-weight: 600;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+
+    /* FAVORITE */
+
+    .favorite {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+
+      width: 36px;
+      height: 36px;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background: rgba(255, 255, 255, 0.9);
+
+      font-size: 17px;
+
+      cursor: pointer;
+    }
+
+
+    /* QUICK SHOP */
+
+    .quick-shop {
+      position: absolute;
+
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+
+      padding: 13px;
+
+      border: none;
+
+      background: white;
+      color: var(--brown);
+
+      font-size: 12px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      opacity: 0;
+      transform: translateY(10px);
+
+      transition: 0.3s;
+    }
+
+    .product-card:hover .quick-shop {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* ================= PRODUCT INFO ================= */
+
+    .product-info {
+      padding-top: 17px;
+    }
+
+    .product-category {
+      color: #9a897d;
+
+      font-size: 10px;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 7px;
+    }
+
+    .product-name {
+      font-family: "Playfair Display", serif;
+
+      font-size: 20px;
+
+      margin-bottom: 7px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      color: var(--brown);
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .rating {
+      color: #9a897d;
+      font-size: 12px;
+    }
+
+
+    /* ================= PROMO ================= */
+
+    .promo {
+      margin: 0 7% 100px;
+
+      min-height: 300px;
+
+      background: #e8ddd2;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 50px 65px;
+
+      overflow: hidden;
+    }
+
+    .promo-text {
+      max-width: 500px;
+    }
+
+    .promo-text small {
+      color: #927969;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .promo-text h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 42px;
+
+      margin: 13px 0;
+    }
+
+    .promo-text p {
+      color: #75675f;
+
+      font-size: 14px;
+      line-height: 1.7;
+
+      margin-bottom: 22px;
+    }
+
+    .promo-button {
+      display: inline-block;
+
+      text-decoration: none;
+
+      background: var(--brown);
+      color: white;
+
+      padding: 14px 25px;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .promo-decoration {
+      font-family: "Playfair Display", serif;
+
+      font-size: 150px;
+
+      font-style: italic;
+
+      color: rgba(92, 73, 61, 0.12);
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #302721;
+      color: white;
+
+      padding: 55px 7%;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+
+      gap: 50px;
+    }
+
+    .footer-logo {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .footer-description {
+      color: #bdb1aa;
+      max-width: 300px;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-column h4 {
+      font-size: 12px;
+
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+
+      margin-bottom: 18px;
+    }
+
+    .footer-column a {
+      display: block;
+
+      color: #bdb1aa;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      margin-bottom: 12px;
+
+      transition: 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+
+      margin-top: 45px;
+      padding-top: 20px;
+
+      color: #8f837c;
+
+      font-size: 11px;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1000px) {
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+
+    @media (max-width: 650px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .collection-header {
+        padding-top: 60px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .product-image {
+        height: 450px;
+      }
+
+      .promo {
+        margin-left: 5%;
+        margin-right: 5%;
+
+        padding: 40px 30px;
+      }
+
+      .promo-decoration {
+        display: none;
+      }
+
+      .promo-text h2 {
+        font-size: 34px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <section class="collection-header">
+
+    <div class="eyebrow">
+      Explore Our Collection
+    </div>
+
+    <h1>
+      Find Your <span>Perfect</span> Hijab
+    </h1>
+
+    <p>
+      Koleksi hijab pilihan dengan material premium,
+      warna yang timeless, dan desain yang mudah
+      dipadukan untuk setiap gaya.
+    </p>
+
+  </section>
+
+
+
+  <!-- ================= CATEGORY ================= -->
+
+  <div class="categories">
+
+    <button class="category active">
+      All Collection
+    </button>
+  </div>
+
+
+
+  <!-- ================= PRODUCTS ================= -->
+
+  <section class="products">
+
+
+    <!-- PRODUCT 1 -->
+
+    <div class="product-card" onclick="window.location.href='product.html?product=silk-voal'">
+
+      <div class="product-image">
+
+        <span class="badge">
+          Bestseller
+        </span>
+
+        <button class="favorite">
+          ♡
+        </button>
+
+        <img
+          src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85"
+          alt="Silk Voal Hijab"
+        >
+
+        <button class="quick-shop">
+          QUICK SHOP
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-category">
+          Voal Premium
+        </div>
+
+        <div class="product-name">
+          Silk Voal
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            Rp129.000
+          </div>
+
+          <div class="rating">
+            ★ 4.9
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PRODUCT 2 -->
+
+    <!-- PRODUCT 2 -->
+<div class="product-card" onclick="window.location.href='product.html?product=latte-pashmina'">
+
+      <div class="product-image">
+
+        <span class="badge">
+          New
+        </span>
+
+        <button class="favorite">
+          ♡
+        </button>
+
+        <img
+          src="https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=800&q=85"
+          alt="Pashmina Latte"
+        >
+
+        <button class="quick-shop">
+          QUICK SHOP
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-category">
+          Pashmina
+        </div>
+
+        <div class="product-name">
+          Latte Pashmina
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            Rp119.000
+          </div>
+
+          <div class="rating">
+            ★ 4.8
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PRODUCT 3 -->
+
+    <!-- PRODUCT 3 -->
+<div class="product-card" onclick="window.location.href='product.html?product=mocha-square'">
+
+      <div class="product-image">
+
+        <button class="favorite">
+          ♡
+        </button>
+
+        <img
+          src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=800&q=85"
+          alt="Mocha Square Hijab"
+        >
+
+        <button class="quick-shop">
+          QUICK SHOP
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-category">
+          Square Hijab
+        </div>
+
+        <div class="product-name">
+          Mocha Square
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            Rp99.000
+          </div>
+
+          <div class="rating">
+            ★ 4.9
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- PRODUCT 4 -->
+
+    <!-- PRODUCT 4 -->
+<div class="product-card" onclick="window.location.href='product.html?product=sage-instant'">
+
+      <div class="product-image">
+
+        <span class="badge">
+          Limited
+        </span>
+
+        <button class="favorite">
+          ♡
+        </button>
+
+        <img
+          src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=85"
+          alt="Sage Instant Hijab"
+        >
+
+        <button class="quick-shop">
+          QUICK SHOP
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-category">
+          Instant
+        </div>
+
+        <div class="product-name">
+          Sage Instant
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            Rp139.000
+          </div>
+
+          <div class="rating">
+            ★ 5.0
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= PROMO ================= -->
+
+  <section class="promo">
+
+    <div class="promo-text">
+
+      <small>
+        Special Collection
+      </small>
+
+      <h2>
+        Soft tones,<br>
+        timeless style.
+      </h2>
+
+      <p>
+        Dapatkan koleksi warna earth tone terbaru
+        dari Alya Scarf. Cocok untuk daily wear
+        maupun acara spesial.
+      </p>
+
+      <a href="#" class="promo-button">
+        SHOP THE COLLECTION
+      </a>
+
+    </div>
+
+    <div class="promo-decoration">
+      AS.
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+
+        <div class="footer-logo">
+          ALYA SCARF.
+        </div>
+
+        <p class="footer-description">
+          Hijab premium untuk perempuan yang
+          percaya bahwa kesederhanaan selalu
+          memiliki tempat dalam keanggunan.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Shop</h4>
+
+        <a href="#">Segi Empat</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Help</h4>
+
+        <a href="https://wa.me/6289682073540">Contact Us</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="returns.html">Returns</a>
+        <a href="faq.html">FAQ</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Follow</h4>
+
+        <a href="https://www.instagram.com/alyascarf.id?stkn=Z21obnN4eGFpZ2Jx&utm_source=qr">Instagram</a>
+        <a href="https://www.tiktok.com/@alya.scarf?_r=1&_t=ZS-99cbOUDEdHt">TikTok</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 ALYA SCARF. All rights reserved.
+    </div>
+
+  </footer>
+
+
+</body>
+</html>

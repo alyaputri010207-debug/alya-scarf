@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Story | LUMI</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f4ee;
+            color: #2d2521;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 80px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e8dfd6;
+            background: #f8f4ee;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #4d3b32;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6d5b50;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2d2521;
+        }
+
+        /* ================= HERO ================= */
+
+        .about-hero {
+            min-height: 75vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 70px;
+            padding: 80px 7%;
+        }
+
+        .about-text {
+            max-width: 570px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #9a725b;
+            margin-bottom: 25px;
+        }
+
+        .about-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 6vw, 78px);
+            line-height: 0.98;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .about-text h1 em {
+            color: #725446;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #786a61;
+            max-width: 500px;
+        }
+
+        /* ================= IMAGE ================= */
+
+        .about-image {
+            position: relative;
+            height: 560px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-card {
+            position: absolute;
+            bottom: -25px;
+            left: -35px;
+            background: #fff;
+            padding: 25px 30px;
+            min-width: 210px;
+            box-shadow: 0 15px 35px rgba(55, 40, 30, 0.08);
+        }
+
+        .image-card span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #a07a64;
+            margin-bottom: 8px;
+        }
+
+        .image-card strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            font-weight: 400;
+        }
+
+        /* ================= STORY ================= */
+
+        .story {
+            background: #eee5dc;
+            padding: 100px 7%;
+        }
+
+        .story-inner {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .story-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .story-inner p {
+            font-size: 15px;
+            line-height: 2;
+            color: #75675e;
+            margin-bottom: 20px;
+        }
+
+        /* ================= VALUES ================= */
+
+        .values {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #9a725b;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 45px;
+            font-weight: 400;
+        }
+
+        .value-grid {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .value-card {
+            background: #fff;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid #eee5dc;
+        }
+
+        .value-icon {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #81736a;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #4d3b32;
+            color: #fff;
+            padding: 60px 7% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            max-width: 320px;
+            color: #d8cbc2;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .footer-column a {
+            display: block;
+            text-decoration: none;
+            color: #d8cbc2;
+            font-size: 12px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 11px;
+            color: #c5b7ad;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .about-hero {
+                grid-template-columns: 1fr;
+                padding: 60px 5%;
+                gap: 50px;
+            }
+
+            .about-image {
+                height: 450px;
+            }
+
+            .image-card {
+                left: 15px;
+            }
+
+            .story {
+                padding: 70px 5%;
+            }
+
+            .story-inner h2 {
+                font-size: 38px;
+            }
+
+            .values {
+                padding: 70px 5%;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            LUMI
+        </a>
+
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="collection.html">Collection</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="about-hero">
+
+        <div class="about-text">
+
+            <div class="eyebrow">
+                OUR STORY
+            </div>
+
+            <h1>
+                Made for<br>
+                <em>Everyday Elegance.</em>
+            </h1>
+
+            <p>
+                LUMI lahir dari sebuah keinginan sederhana:
+                menghadirkan hijab yang tidak hanya nyaman dikenakan,
+                tetapi juga mampu mencerminkan keanggunan dalam setiap gaya.
+            </p>
+
+        </div>
+
+
+        <div class="about-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1584187772382-b9c0f6a5c7e6?auto=format&fit=crop&w=1000&q=85"
+                alt="LUMI Hijab"
+            >
+
+            <div class="image-card">
+
+                <span>
+                    EST. 2026
+                </span>
+
+                <strong>
+                    Elegance in Every Fold.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STORY ================= -->
+
+    <section class="story">
+
+        <div class="story-inner">
+
+            <h2>
+                More Than Just a Hijab
+            </h2>
+
+            <p>
+                Bagi kami, hijab bukan sekadar pelengkap penampilan.
+                Hijab adalah bagian dari perjalanan setiap perempuan,
+                menemani langkah kecil maupun momen besar dalam kehidupan.
+            </p>
+
+            <p>
+                Karena itu, LUMI menghadirkan koleksi dengan material
+                pilihan, warna yang timeless, dan desain yang sederhana
+                namun tetap berkarakter.
+            </p>
+
+            <p>
+                Kami percaya bahwa keanggunan tidak perlu berlebihan.
+                Terkadang, justru kesederhanaanlah yang membuat seseorang
+                terlihat paling berkesan.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VALUES ================= -->
+
+    <section class="values">
+
+        <div class="section-title">
+
+            <span>
+                WHAT WE BELIEVE
+            </span>
+
+            <h2>
+                The LUMI Philosophy
+            </h2>
+
+        </div>
+
+
+        <div class="value-grid">
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    ♡
+                </div>
+
+                <h3>
+                    Comfort
+                </h3>
+
+                <p>
+                    Kenyamanan menjadi prioritas dalam setiap material
+                    dan detail yang kami pilih.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Timeless
+                </h3>
+
+                <p>
+                    Desain sederhana yang mudah dipadukan dan tetap
+                    relevan dari waktu ke waktu.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Quality
+                </h3>
+
+                <p>
+                    Kami memilih material berkualitas untuk memberikan
+                    pengalaman terbaik bagi setiap pelanggan.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h2>
+                    LUMI
+                </h2>
+
+                <p>
+                    Premium hijab designed for everyday elegance,
+                    comfort, and effortless style.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    EXPLORE
+                </h4>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="collection.html">
+                    Collection
+                </a>
+
+                <a href="about.html">
+                    Our Story
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    HELP
+                </h4>
+
+                <a href="shipping.html">
+                    Shipping
+                </a>
+
+                <a href="returns.html">
+                    Returns
+                </a>
+
+                <a href="faq.html">
+                    FAQ
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 LUMI. All rights reserved.
+        </div>
+
+    </footer>
+
+</body>
+</html>
